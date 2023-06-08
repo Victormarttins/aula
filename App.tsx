@@ -1,11 +1,40 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import Texto from './Text';
+import ImageIndesx from './image';
+import Botao from './button';
+import { useState } from 'react';
 
 export default function App() {
+
+  const [index,setIndex]=useState(0)
+  const image = [
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaLR54nL_9zcB9eq2kH2LKUWAuK4_e2nVzSg&usqp=CAU',
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSae-DdXLNzl9sd4Nn5mDppFkCiPF0caF07Qw&usqp=CAU',
+
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdanIgd9YHmQVZy71kpooA8XZstkHZ1uP_fA&usqp=CAU'
+  ]
+
+  const mudarimage=()=>{
+    if(index == 2){
+   setIndex(0)
+    }else{
+      setIndex(index+1)
+
+    }
+    
+  
+    
+  }
+
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Texto Texto='imagelist' />
+      <ImageIndesx imageIndex={image[index]} />
+
+      <Botao botao={mudarimage}  />
+
     </View>
   );
 }
@@ -13,8 +42,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#1919',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+
 });
